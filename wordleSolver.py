@@ -2,7 +2,6 @@ from unittest import skip
 import numpy as np
 import csv
 import streamlit as st
-import time
 
 with open("dictionary.csv") as file_name:
     file_read = csv.reader(file_name)
@@ -143,15 +142,21 @@ def findWordWith(wordObject):
 
 
 st.title("Wordle Solver")
+with st.expander("What is correctness?"):
+    st.text("Incorrect letter = 0")
+    st.text("Correct Letter = 1")
+    st.text("Wrong Place = 2")
+    st.markdown("---")
+    st.subheader("Example")
+    st.markdown("***Guessed Word: *** Proud")
+    st.markdown("***Correctness: *** 01102")
 
+st.markdown("---")
 col1, col2 = st.columns(2)
 
-init = st.radio("Toggle this to clear text", ("Clear", "Text temp off"))
+init = False
 
-if init == "Clear":
-    init = False
-else:
-    init = True
+"*Refresh page to clear all guesses*"
 
 with st.expander("1 Word Guessed"):
     st.header("Word Guessed + Correctness")
@@ -235,7 +240,7 @@ else:
     fifthGuess = []
 
 
-if st.button("Enter Guess"):
+if st.button("Enter Guesses"):
     for i in findWordWith(
         solveWordle(firstGuess, secondGuess, thirdGuess, fourthGuess, fifthGuess)
     ):

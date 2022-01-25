@@ -73,7 +73,6 @@ def letterIsIn(testWord, listOfWrongPlace):
         if listOfWrongPlace[i][0] not in testWord:
             return False
         if listOfWrongPlace[i][0] in testWord:
-            print(listOfWrongPlace[i])
             if listOfWrongPlace[i][0] == testWord[listOfWrongPlace[i][1]]:
                 return False
         else:
@@ -147,10 +146,7 @@ st.title("Wordle Solver")
 
 col1, col2 = st.columns(2)
 
-init = False
-
-if st.button("Clear Entries"):
-    init = True
+if not st.button("Clear Entries"):
     init = False
 
 

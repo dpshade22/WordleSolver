@@ -146,9 +146,12 @@ st.title("Wordle Solver")
 
 col1, col2 = st.columns(2)
 
-if not st.button("Clear Entries"):
-    init = False
+init = st.radio("Toggle this to clear text", ("Clear", "Text temp off"))
 
+if init == "Clear":
+    init = False
+else:
+    init = True
 
 with st.expander("1 Word Guessed"):
     st.header("Word Guessed + Correctness")
